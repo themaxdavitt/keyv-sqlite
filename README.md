@@ -2,16 +2,14 @@
 
 > SQLite storage adapter for Keyv
 
-[![Build Status](https://travis-ci.org/lukechilds/keyv-sqlite.svg?branch=master)](https://travis-ci.org/lukechilds/keyv-sqlite)
-[![Coverage Status](https://coveralls.io/repos/github/lukechilds/keyv-sqlite/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/keyv-sqlite?branch=master)
-[![npm](https://img.shields.io/npm/v/@keyv/sqlite.svg)](https://www.npmjs.com/package/@keyv/sqlite)
+[![Build Status](https://github.com/themaxdavitt/keyv-sqlite/actions/workflows/node.js.yml/badge.svg)](https://github.com/themaxdavitt/keyv-sqlite/actions/workflows/node.js.yml)
 
-SQLite storage adapter for [Keyv](https://github.com/lukechilds/keyv).
+Fork of [`@keyv/sqlite`](https://github.com/lukechilds/keyv-sqlite), a SQLite storage adapter for [Keyv](https://github.com/lukechilds/keyv).
 
 ## Install
 
 ```shell
-npm install --save keyv @keyv/sqlite
+npm install --save keyv themaxdavitt/keyv-sqlite
 ```
 
 ## Usage
@@ -29,8 +27,8 @@ e.g:
 
 ```js
 const keyv = new Keyv('sqlite://path/to/database.sqlite', {
-  table: 'cache',
-  busyTimeout: 10000
+	table: 'cache',
+	busyTimeout: 10000,
 });
 ```
 

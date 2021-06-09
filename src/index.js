@@ -1,32 +1,34 @@
-'use strict';
-
 const KeyvSql = require('@keyv/sql');
 const sqlite3 = require('sqlite3');
 const pify = require('pify');
 
 class KeyvSqlite extends KeyvSql {
-	constructor(opts) {
-		opts = Object.assign({
-			dialect: 'sqlite',
-			uri: 'sqlite://:memory:'
-		}, opts);
-		opts.db = opts.uri.replace(/^sqlite:\/\//, '');
+	constructor(options) {
+		options = Object.assign(
+			{
+				dialect: 'sqlite',
+				uri: 'sqlite://:memory:',
+			},
+			options
+		);
+		options.db = options.uri.replace(/^sqlite:\/\//, '');
 
-		opts.connect = () => new Promise((resolve, reject) => {
-			const db = new sqlite3.Database(opts.db, err => {
-				if (err) {
-					reject(err);
-				} else {
-					if (opts.busyTimeout) {
-						db.configure('busyTimeout', opts.busyTimeout);
+		options.connect = () =>
+			new Promise((resolve, reject) => {
+				const db = new sqlite3.Database(options.db, (error) => {
+					if (error) {
+						reject(error);
+					} else {
+						if (options.busyTimeout) {
+							db.configure('busyTimeout', options.busyTimeout);
+						}
+
+						resolve(db);
 					}
-					resolve(db);
-				}
-			});
-		})
-		.then(db => pify(db.all).bind(db));
+				});
+			}).then((db) => pify(db.all).bind(db));
 
-		super(opts);
+		super(options);
 	}
 }
 
