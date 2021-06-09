@@ -8,10 +8,18 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "xo": {
-    "extends": "xo-lukechilds"
+    "extends": "xo-lukechilds",
+    "rules": {
+      "indent": "off",
+      "padding-line-between-statements": "off",
+      "unicorn/numeric-separators-style": "off",
+      "unicorn/prefer-module": "off",
+      "unicorn/prevent-abbreviations": "off"
+    }
   },
   "ava": {
     "require": [
+      "esm",
       "requirable"
     ]
   },
@@ -38,19 +46,20 @@
   },
   "homepage": "https://github.com/lukechilds/keyv-sqlite",
   "dependencies": {
-    "@keyv/sql": "1.1.2",
-    "pify": "3.0.0",
-    "sqlite3": "^5.0.0"
+    "@keyv/sql": "^1.1.2",
+    "pify": "^3.0.0",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "@keyv/test-suite": "*",
-    "ava": "^1.4.1",
-    "coveralls": "^3.0.0",
-    "eslint-config-xo-lukechilds": "^1.0.0",
+    "ava": "^3.15.0",
+    "coveralls": "^3.1.0",
+    "eslint-config-xo-lukechilds": "^1.0.1",
+    "esm": "^3.2.25",
     "keyv": "*",
-    "nyc": "^14.1.1",
-    "requirable": "^1.0.1",
-    "this": "^1.0.2",
-    "xo": "^0.19.0"
+    "nyc": "^15.1.0",
+    "requirable": "^1.0.5",
+    "this": "^1.1.0",
+    "xo": "^0.40.2"
   }
 }
